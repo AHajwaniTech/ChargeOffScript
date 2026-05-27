@@ -1,5 +1,56 @@
 <?php
 session_start();
+
+/** ----------------------------------------------------------------------------
+ *
+ * Filename: openInventoryReport.php
+ * @author KEANT Technologies
+ *
+ * @description
+ *
+ * - Generates XLSX inventory reports for Open, Closed, Pending,
+ *   and combined account selections.
+ *
+ * - Retrieves account data based on selected account type(s),
+ *   user role, and client/attorney filters.
+ *
+ * - Supports the following report combinations:
+ *      • Open Accounts
+ *      • Closed Accounts
+ *      • Open + Closed Accounts
+ *      • Pending Accounts
+ *      • Open + Closed + Pending Accounts
+ *
+ * - Formats report output using PHP_XLSXWriter with standardized
+ *   column headers, widths, styling, and date formatting.
+ *
+ * - Handles invalid RMS charge-off dates safely to prevent
+ *   Excel date conversion errors.
+ *
+ * - Generates XLSX files dynamically and stores them under:
+ *      /var/www/html/bi/dist/Report/uploadsexcel/
+ *
+ * - Returns JSON status responses after successful report creation.
+ *
+ * ----------------------------------------------------------------------------
+ * CHANGELOG:
+ * ----------------------------------------------------------------------------
+ *
+ * Version | Date       | Author              | Description
+ * ----------------------------------------------------------------------------
+ * 1.0     | 2026-05-27 | KEANT Technologies  | Initial version with
+ *         |            |                     | developer documentation
+ *         |            |                     | and changelog
+ *
+ * 1.1     | 2026-06-05 | AH                  | Added invalid charge-off
+ *         |            |                     | date handling for Excel
+ *         |            |                     | compatibility
+ *
+ * ----------------------------------------------------------------------------
+ */
+
+
+
 include_once('PHP_XLSXWriter/xlsxwriter.class.php');
   ini_set('display_errors', 0);
   ini_set('log_errors', 1);
